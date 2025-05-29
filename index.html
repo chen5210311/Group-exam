@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/gonggong.css" />
+    <script src="js/index.js" type="text/javascript" charset="UTF-8"></script>
+    <title>首页</title>
+    <style>
+        /* 为显示节气信息的容器添加样式 */
+        .info-box {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            width: 300px;
+            margin: 0 auto;
+            background-color: #f9f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .info-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .info-box p {
+            text-indent: 2em;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <div class="top">
+            <div class="w1200">
+                <div class="fr">
+                    <a href="login.html">登录</a>|
+                    <a href="zhuce.html">注册</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav bg-white">
+            <div class="w1200">
+                <a class="fl" href="index.html"><img src="images/logo.png"></a>
+                <div class="fr">
+                    <ul>
+                        <li class="act"><a href="index.html">首页</a></li>
+                        <li><a href="jieqi.html">二十四节气</a></li>
+                        <li><a href="jianjie.html">节气简介</a></li>
+                        <li><a href="yuanyuan.html">节气渊源</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner区域 -->
+    <div class="banner"></div>
+    <!-- 首页内容区域 -->
+    <div class="goods-con">
+        <div class="w1200">
+            <h3>三立一春</h3>
+            <div class="goods-item fr">
+                <div class="shangpin item bz">
+                    <a class="fl bz" onmouseover="showInfo('springEquinox')" onmouseout="hideInfo('springEquinox')">
+                        <img src="images/jieqi4.jpg">
+                        <div class="ell_1 tc">春分</div>
+                    </a>
+                    <div id="springEquinox" class="info-box">
+                        <h3>春分</h3>
+                        <img src="images/jieqi4.jpg" alt="春分">
+                        <p>春分是春季九十天的中分点，太阳到达黄经0度，通常在每年的3月20日、21日或22日。</p>
+                    </div>
+                    <a class="fl bz" onmouseover="showInfo('beginningOfSummer')" onmouseout="hideInfo('beginningOfSummer')">
+                        <img src="images/jieqi7.jpg">
+                        <div class="ell_1 tc">立夏</div>
+                    </a>
+                    <div id="beginningOfSummer" class="info-box">
+                        <h3>立夏</h3>
+                        <img src="images/jieqi7.jpg" alt="立夏">
+                        <p>立夏是夏季的第一个节气，太阳到达黄经45度，标志着夏季的开始，通常在每年的5月5日或6日。</p>
+                    </div>
+                    <a class="fl bz" onmouseover="showInfo('beginningOfAutumn')" onmouseout="hideInfo('beginningOfAutumn')">
+                        <img src="images/jieqi13.jpg">
+                        <div class="ell_1 tc">立秋</div>
+                    </a>
+                    <div id="beginningOfAutumn" class="info-box">
+                        <h3>立秋</h3>
+                        <img src="images/jieqi13.jpg" alt="立秋">
+                        <p>立秋是秋季的第一个节气，太阳到达黄经135度，标志着秋季的开始，通常在每年的8月7日或8日。</p>
+                    </div>
+                    <a class="fl bz" onmouseover="showInfo('beginningOfWinter')" onmouseout="hideInfo('beginningOfWinter')">
+                        <img src="images/jieqi19.jpg">
+                        <div class="ell_1 tc">立冬</div>
+                    </a>
+                    <div id="beginningOfWinter" class="info-box">
+                        <h3>立冬</h3>
+                        <img src="images/jieqi19.jpg" alt="立冬">
+                        <p>立冬是冬季的第一个节气，太阳到达黄经225度，标志着冬季的开始，通常在每年的11月7日或8日。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start:图文介绍 -->
+    <div class="jieshao">
+        <div class="jieshao-con w1200">
+            <img class="fl" src="images/index2.jpg" id="img"/>
+            <div class="jieshao1 fl">
+                <h3 class="f26" id="h1">二十四节气记忆口诀</h3>
+                <p class="jieshao1p f14">春雨惊春清谷天，</p>
+                <p class="jieshao1p f14">夏满芒夏暑相连，</p>
+                <p class="jieshao1p f14">秋处露秋寒霜降，</p>
+                <p class="jieshao1p f14">冬雪雪冬小大寒。</p>
+            </div>
+        </div>
+    </div>
+    <!-- End:图文介绍 -->
+    <div class="footer tc"></div>
+
+    <script>
+        function showInfo(infoBoxId) {
+            const infoBox = document.getElementById(infoBoxId);
+            infoBox.style.display = 'block';
+        }
+
+        function hideInfo(infoBoxId) {
+            const infoBox = document.getElementById(infoBoxId);
+            infoBox.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
