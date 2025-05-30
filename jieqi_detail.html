@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/gonggong.css" />
+    <title>节气详情</title>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <div class="top">
+            <div class="w1200">
+                <div class="fr">
+                    <a href="login.html">登录</a>|
+                    <a href="zhuce.html">注册</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav bg-white">
+            <div class="w1200">
+                <a class="fl" href="index.html"><img src="images/logo.png"></a>
+                <div class="fr">
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="jieqi.html">二十四节气</a></li>
+                        <li><a href="jianjie.html">节气简介</a></li>
+                        <li><a href="yuanyuan.html">节气渊源</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner区域 -->
+    <div class="banner"></div>
+    <!-- 内容区域 -->
+    <div class="jieqi-detail">
+        <h2 id="jieqi-name">节气名称</h2>
+        <img id="jieqi-image" src="" alt="节气图片">
+        <p id="jieqi-description">这里显示节气的详细描述。</p>
+    </div>
+    <!-- 底部内容 -->
+    <div class="footer tc"></div>
+
+    <script>
+        // 获取URL中的查询参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const jieqiName = urlParams.get('name');
+
+        // 节气数据
+        const jieqiData = {
+            "立春": { image: "images/jieqi1.jpg", description: "立春，又名正月节、岁节、改岁、岁旦、打春等，于每年公历2月3-5日交节。立，是“开始”之意；春，代表着温暖、生长。立春乃万物起始、一切更生之义也，意味着新的一个轮回已开启。" },
+            "雨水": { image: "images/jieqi2.jpg", description: "雨水，是二十四节气之中的第2个节气，位于每年正月十五前后（公历2月18-20日）。此时，气温回升、冰雪融化、降水增多，故取名为雨水。雨水节气时段一般从公历2月18日或19日开始，到3月4日或5日结束。" },
+            "惊蛰": { image: "images/jieqi3.jpg", description: "惊蛰，古称“启蛰”，是二十四节气中的第三个节气，标志着仲春时节的开始，太阳到达黄经345°时。此前，动物入冬藏伏土中，不饮不食，称为“蛰”；到了“惊蛰节”，天上的春雷惊醒蛰居的动物，称为“惊”。故惊蛰时，蛰虫惊醒，天气转暖，渐有春雷，中国大部分地区进入春耕季节。" },
+			"春分": { image: "images/jieqi4.jpg", description: "春分，是春季九十天的中分点。二十四节气之一，每年公历大约为3月20日左右，太阳位于黄经0°（春分点）时。春分这一天太阳直射地球赤道，昼夜等长。" },
+			"清明": { image: "images/jieqi5.jpg", description: "清明是二十四节气中的第五个节气，也是最重要的祭祀节日之一，是祭祖和扫墓的日子。中国汉族传统的清明节大约始于周代，距今已有二千五百多年的历史。清明节与端午节、中秋节和春节并称为中国四大传统节日。" },
+			"谷雨": { image: "images/jieqi6.jpg", description: "谷雨是二十四节气的第六个节气，也是春季最后一个节气，每年4月19日～21日时太阳到达黄经30°时为谷雨，源自古人“雨生百谷”之说。同时也是播种移苗、埯瓜点豆的最佳时节。" },
+			"立夏": { image: "images/jieqi7.jpg", description: "立夏是农历二十四节气中的第7个节气，夏季的第一个节气，表示孟夏时节的正式开始，太阳到达黄经45度时为立夏节气。斗指东南，维为立夏，万物至此皆长大，故名立夏也。" },
+			"小满": { image: "images/jieqi8.jpg", description: "小满是二十四节气之一，夏季的第二个节气。其含义是夏熟作物的籽粒开始灌浆饱满，但还未成熟，只是小满，还未大满。每年5月20日到22日之间视太阳到达黄经60°时为小满。" },
+			"芒种": { image: "images/jieqi9.jpg", description: "芒种是二十四节气中的第9个节气，更是干支历午月的起始；时间点在公历每年6月6日前后，太阳到达黄经75°时。芒种字面的意思是“有芒的麦子快收，有芒的稻子可种”。中国古代将芒种分为三候：“一候螳螂生；二候鹏始鸣；三候反舌无声。”此时中国长江中下游地区将进入多雨的黄梅时节。" },
+			"夏至": { image: "images/jieqi10.jpg", description: "夏至是二十四节气之一，在每年公历6月21日或22日。夏至这天，太阳运行至黄经90度（夏至点），太阳直射地面的位置到达一年的最北端，几乎直射北回归线，此时，北半球各地的白昼时间达到全年最长。" },
+			"小暑": { image: "images/jieqi11.jpg", description: "小暑是二十四节气之第十一个节气，也是干支历午月的结束以及未月的起始；公历每年7月7日或8日视太阳到达黄经105°时为小暑。暑，表示炎热的意思，小暑为小热，还不十分热。意指天气开始炎热，但还没到最热。" },
+			"大暑": { image: "images/jieqi12.jpg", description: "大暑是二十四节气之一，北半球在每年7月22-24日之间，南半球在每年1月20-22日之间，太阳位于黄经120°。大暑是一年中最热的时期，气温最高，农作物生长最快，同时，很多地区的旱、涝、风灾等各种气象灾害也最为频繁。" },
+			"立秋": { image: "images/jieqi13.jpg", description: "立秋，是二十四节气中的第13个节气，每年8月7、8或9日立秋，意味着炎热的夏天即将过去，凉爽的秋天即将来临。" },
+			"处暑": { image: "images/jieqi14.jpg", description: "处暑，是二十四节气之中的第14个节气，交节时间点在公历8月23日前后，太阳到达黄经150°。处暑的到来同时意味着进入干支历申月的下半月。" },
+			"白露": { image: "images/jieqi15.jpg", description: "白露是二十四节气中的第十五个节气，更是干支历申月的结束以及酉月的起始；时间点在公历每年9月7日到9日，太阳到达黄经165度时。" },
+			"秋分": { image: "images/jieqi16.jpg", description: "秋分，是二十四节气中的第十六个节气，时间一般为每年的公历9月22~24日。秋分这天太阳到达黄经180°（秋分点），几乎直射地球赤道，全球各地昼夜等长。" },
+			"寒露": { image: "images/jieqi17.jpg", description: "寒露是二十四节气中的第17个节气，每年10月8日或9日视太阳到达黄经195°时为寒露。与白露相比，寒露除了是气候从凉爽到寒冷的过渡，还有一层意思是此时的露水要更冷，快要凝结成霜了。" },
+			"霜降": { image: "images/jieqi18.jpg", description: "霜降二十四节气之一，每年公历10月23日左右，霜降节气含有天气渐冷、初霜出现的意思，是秋季的最后一个节气，也意味着冬天即将开始。" },
+			"立冬": { image: "images/jieqi19.jpg", description: "立冬是农历二十四节气之一，也是中国传统节日之一；时间点在公历每年11月7-8日之间，即太阳位于黄经225°。此时，地球位于赤纬-16°19'，北半球的太阳高度较小，白昼时间缩短，北半球获得太阳的光热较少。" },
+			"小雪": { image: "images/jieqi20.jpg", description: "小雪，是二十四节气中的第20个节气。时间在11月22或23日，太阳到达黄经240°时，称为小雪节气。" },
+			"大雪": { image: "images/jieqi21.jpg", description: "大雪，是二十四节气中的第21个节气，更是干支历子月的起始；时间点在公历每年12月7日前后，太阳到达黄经255°。" },
+			"冬至": { image: "images/jieqi22.jpg", description: "冬至是二十四节气中一个重要的节气，也是中华民族的一个传统节日。冬至是北半球全年中白天最短、夜晚最长的一天，在中国北方有冬至吃饺子的风俗。" },
+			"小寒": { image: "images/jieqi23.jpg", description: "小寒是二十四节气中的第23个节气，也是干支历子月的结束以及丑月的起始，时间是在公历1月5-7日之间，太阳位于黄经285°。" },
+			"大寒": { image: "images/jieqi24.jpg", description: "大寒是二十四节气中的最后一个节气，时间在每年公历1月20-22日之间，太阳到达黄经300°。大寒是冬季的最后一个节气，意味着寒冷的冬天即将结束，春天即将来临。" }
+            // 添加其他节气的数据
+        };
+
+        // 根据节气名称加载内容
+        if (jieqiName && jieqiData[jieqiName]) {
+            const jieqiInfo = jieqiData[jieqiName];
+            document.getElementById('jieqi-name').innerText = jieqiName;
+            document.getElementById('jieqi-image').src = jieqiInfo.image;
+            document.getElementById('jieqi-description').innerText = jieqiInfo.description;
+        } else {
+            document.getElementById('jieqi-name').innerText = "节气未找到";
+            document.getElementById('jieqi-description').innerText = "您访问的节气不存在。";
+        }
+    </script>
+</body>
+</html>
